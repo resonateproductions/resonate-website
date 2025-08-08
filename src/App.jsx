@@ -138,7 +138,7 @@ export default function App() {
           </div>
 
           <div className="relative">
-            <div className="rounded-3xl border border-white/10 bg:white/5 bg-white/5 p-6 shadow-2xl">
+            <div className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-2xl">
               <div className="aspect-video w-full overflow-hidden rounded-2xl bg-black/60 ring-1 ring-white/10">
                 {/* Hero visual — swap the placeholder image or drop in an event photo */}
                 <img
@@ -218,7 +218,232 @@ export default function App() {
         </div>
       </section>
 
-      {/* More sections omitted for brevity; rest matches user's content */}
+      {/* PORTFOLIO */}
+      <section id="portfolio" className="border-t border-white/10 bg-white/5">
+        <div className="mx-auto max-w-7xl px-4 py-20">
+          <div className="flex items-end justify-between">
+            <div>
+              <h2 className="text-3xl font-bold sm:text-4xl">Portfolio</h2>
+              <p className="mt-2 max-w-2xl text-white/70">
+                A few snapshots from recent stages we’ve supported.
+              </p>
+            </div>
+            <a href="#contact" className="hidden sm:inline-block rounded-xl bg-[#E10600] px-5 py-2 font-semibold text-white hover:bg-[#ff2a22]">
+              Book Your Date
+            </a>
+          </div>
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              "https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=1600&auto=format&fit=crop",
+              "https://images.unsplash.com/photo-1510826373715-9731d76f6d66?q=80&w=1600&auto=format&fit=crop",
+              "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?q=80&w=1600&auto=format&fit=crop",
+              "https://images.unsplash.com/photo-1506157786151-b8491531f063?q=80&w=1600&auto=format&fit=crop",
+              "https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=1600&auto=format&fit=crop",
+              "https://images.unsplash.com/photo-1507878866276-a947ef722fee?q=80&w=1600&auto=format&fit=crop",
+            ].map((src, idx) => (
+              <div key={idx} className="group overflow-hidden rounded-2xl ring-1 ring-white/10">
+                <img src={src} alt="Event photo" className="h-72 w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* GEAR */}
+      <section id="gear" className="border-t border-white/10">
+        <div className="mx-auto max-w-7xl px-4 py-20">
+          <h2 className="text-3xl font-bold sm:text-4xl">Gear & Tech</h2>
+          <p className="mt-2 max-w-2xl text-white/70">
+            A representative list — we’ll scale to your room and audience.
+          </p>
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              { h: "Consoles & I/O", items: ["Behringer WING / X32", "Yamaha DM series (available via partners)", "Dante networking / stageboxes"] },
+              { h: "Microphones", items: ["Shure SM/Beta series", "Sennheiser e9xx", "Drum & choir mic kits"] },
+              { h: "Monitors & RF", items: ["Sennheiser IEMs", "Wireless handhelds & lavs", "Antenna distro"] },
+              { h: "Loudspeakers", items: ["Array & point‑source", "Subs as needed", "Delay fills"] },
+              { h: "Playback", items: ["Tracks, click & guide", "Timecode to video/lighting", "Multitrack recording"] },
+              { h: "Utilities", items: ["Power distro", "Stands, cabling, cases", "Stage management"] },
+            ].map((g) => (
+              <div key={g.h} className="rounded-2xl border border-white/10 bg-white/5 p-6 ring-1 ring-white/10">
+                <h3 className="text-lg font-semibold">{g.h}</h3>
+                <ul className="mt-3 list-disc space-y-1 pl-5 text-white/75">
+                  {g.items.map((it) => (
+                    <li key={it}>{it}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PACKAGES */}
+      <section id="packages" className="border-t border-white/10 bg-white/5">
+        <div className="mx-auto max-w-7xl px-4 py-20">
+          <h2 className="text-3xl font-bold sm:text-4xl">Packages</h2>
+          <p className="mt-2 max-w-2xl text-white/70">
+            Transparent options sized for most gatherings. Custom quotes available.
+          </p>
+          <div className="mt-10 grid gap-6 lg:grid-cols-3">
+            {[
+              {
+                name: "Essential",
+                price: "Starts at $X",
+                goodFor: "Acoustic sets, small rooms, breakout sessions",
+                features: ["Compact PA + 1 sub", "2 wireless mics", "Basic playback", "Pro tech (up to 4 hrs)"]
+              },
+              {
+                name: "Standard",
+                price: "Starts at $X",
+                goodFor: "Mid‑size worship nights & corporate meetings",
+                features: ["Full PA + subs", "4–6 wireless / IEMs", "Multitrack playback", "Pro tech (up to 6 hrs)"]
+              },
+              {
+                name: "Full Production",
+                price: "Custom",
+                goodFor: "Conferences, outdoor, multi‑band events",
+                features: ["Scaled PA + fills", "Comms & stage management", "Recording + timecode", "Team of engineers"]
+              },
+            ].map((p, idx) => (
+              <div
+                key={p.name}
+                className={`relative rounded-2xl border p-6 ring-1 ${
+                  idx === 1 ? "border-[#E10600]/40 bg-[#E10600]/5 ring-[#E10600]/40" : "border-white/10 bg-black/30 ring-white/10"
+                }`}
+              >
+                {idx === 1 && (
+                  <span className="absolute -top-3 right-6 rounded-full bg-[#E10600] px-3 py-1 text-xs font-semibold text-white">
+                    Most Popular
+                  </span>
+                )}
+                <h3 className="text-2xl font-bold">{p.name}</h3>
+                <p className="mt-1 text-white/70">{p.goodFor}</p>
+                <p className="mt-4 text-xl font-semibold">{p.price}</p>
+                <ul className="mt-4 space-y-2 text-white/80">
+                  {p.features.map((f) => (
+                    <li key={f} className="flex items-start gap-2">
+                      <span className="mt-1 inline-block h-2 w-2 rounded-full bg-[#E10600]" />
+                      <span>{f}</span>
+                    </li>
+                  ))}
+                </ul>
+                <a href="#contact" className="mt-6 inline-block rounded-xl bg-white/10 px-4 py-2 font-medium text-white hover:bg-white/20">
+                  Request This Package
+                </a>
+              </div>
+            ))}
+          </div>
+          <p className="mt-6 text-sm text-white/60">
+            *Final pricing varies by venue, audience size, schedule, and logistics.
+          </p>
+        </div>
+      </section>
+
+      {/* ABOUT */}
+      <section id="about" className="border-t border-white/10">
+        <div className="mx-auto max-w-7xl px-4 py-20">
+          <div className="grid gap-10 lg:grid-cols-2">
+            <div>
+              <h2 className="text-3xl font-bold sm:text-4xl">About ResoNate</h2>
+              <p className="mt-4 text-white/80">
+                Founded by Nate Vela, ResoNate Productions serves the Rio Grande
+                Valley with professional audio that supports the message — not the
+                other way around. We value excellence, great sound, faith, and hard
+                work. Whether it’s a Sunday service or a corporate meeting, we come
+                prepared, on time, and focused on the win for your audience.
+              </p>
+              <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                {[
+                  { h: "Faith‑forward", p: "We serve ministries and values‑aligned events." },
+                  { h: "Detail‑driven", p: "Advance prep, clean stage plots, tidy cable runs." },
+                  { h: "Scalable", p: "From intimate rooms to outdoor gatherings." },
+                  { h: "Partner network", p: "Access to lighting, video, and staging as needed." },
+                ].map((b) => (
+                  <div key={b.h} className="rounded-xl border border-white/10 bg-white/5 p-4">
+                    <h3 className="font-semibold">{b.h}</h3>
+                    <p className="text-white/70">{b.p}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
+              <div className="aspect-[4/5] overflow-hidden rounded-2xl ring-1 ring-white/10">
+                <img
+                  src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=1200&auto=format&fit=crop"
+                  alt="Engineer at a mixing console"
+                  className="h-full w-full object-cover opacity-90"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CONTACT */}
+      <section id="contact" className="border-t border-white/10 bg-gradient-to-b from-black via-black to-[#0a0a0a]">
+        <div className="mx-auto max-w-7xl px-4 py-20">
+          <div className="grid gap-10 lg:grid-cols-2">
+            <div>
+              <h2 className="text-3xl font-bold sm:text-4xl">Request a Quote</h2>
+              <p className="mt-2 max-w-xl text-white/70">
+                Tell us about your event and we’ll follow up within 24 hours.
+              </p>
+              <form
+                onSubmit={(e) => e.preventDefault()}
+                className="mt-8 space-y-4"
+              >
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <input className="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 placeholder-white/40 outline-none focus:ring-2 focus:ring-[#E10600]" placeholder="Name" />
+                  <input type="email" className="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 placeholder-white/40 outline-none focus:ring-2 focus:ring-[#E10600]" placeholder="Email" />
+                </div>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <input className="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 placeholder-white/40 outline-none focus:ring-2 focus:ring-[#E10600]" placeholder="Event Type (worship night, conference, etc.)" />
+                  <input className="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 placeholder-white/40 outline-none focus:ring-2 focus:ring-[#E10600]" placeholder="Date & Venue" />
+                </div>
+                <textarea rows={5} className="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 placeholder-white/40 outline-none focus:ring-2 focus:ring-[#E10600]" placeholder="Share details: audience size, schedule, special needs…" />
+                <button className="w-full rounded-xl bg-[#E10600] px-6 py-3 font-semibold uppercase tracking-wide text-white hover:bg-[#ff2a22]">
+                  Send (demo)
+                </button>
+                <p className="text-xs text-white/50">This demo doesn’t send email. Hook it to your form service (Netlify, Formspree, Tally, etc.).</p>
+              </form>
+            </div>
+
+            <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
+              <div className="space-y-4">
+                <h3 className="text-xl font-semibold">Direct Contact</h3>
+                <div className="space-y-2 text-white/80">
+                  <p>
+                    Email: <a className="text-white underline decoration-white/30 underline-offset-4 hover:text-white" href="mailto:info@resonateproductions.net">info@resonateproductions.net</a>
+                  </p>
+                  <p>
+                    Phone: <a className="text-white underline decoration-white/30 underline-offset-4 hover:text-white" href="tel:+1-956-463-9154">(956)463-9154</a>
+                  </p>
+                  <p>
+                    Instagram: <a className="text-white underline decoration-white/30 underline-offset-4 hover:text-white" href="https://instagram.com/resonateproductions" target="_blank" rel="noreferrer">@resonateproductions</a>
+                  </p>
+                </div>
+                <div className="mt-6 rounded-xl bg-black/60 p-4 text-sm text-white/70 ring-1 ring-white/10">
+                  <p className="font-semibold">Service Area</p>
+                  <p>Rio Grande Valley and surrounding Texas cities. Travel available upon request.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="border-t border-white/10">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-4 py-8 sm:flex-row">
+          <p className="text-white/60">© {new Date().getFullYear()} ResoNate Productions LLC</p>
+          <div className="flex items-center gap-6 text-white/60">
+            <a href="#services" className="text-white/60 hover:text-white">Services</a>
+            <a href="#packages" className="text-white/60 hover:text-white">Packages</a>
+            <a href="#contact" className="text-white/60 hover:text-white">Book</a>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
